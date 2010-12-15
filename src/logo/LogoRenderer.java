@@ -1,11 +1,15 @@
 
 package logo;
 
-import simplerjogl.*;
-import simplerjogl.simplerjogl2d.*;
-import simplerjogl.shell.*;
-import java.util.*;
-import javax.media.opengl.*;
+import java.util.ArrayList;
+
+import javax.media.opengl.GL2;
+
+import simplerjogl.Color;
+import simplerjogl.Material;
+import simplerjogl.Vertex;
+import simplerjogl.shell.ShellEvent;
+import simplerjogl.simplerjogl2d.Renderer2D;
 
 /**
  * The actual Logo-style drawing environment. The renderer draws the
@@ -16,7 +20,7 @@ import javax.media.opengl.*;
  * @author Seth Battis
  * @version 1.0
  */
-public class LogoRenderer extends Renderer2D implements ShellListener
+public class LogoRenderer extends Renderer2D
 {
 	/* The vocabulary of the Logo instructions. */
 	private static final int MOVE = 0, HEADING = 1, FORWARD = 2, BACK = 3, TURN_LEFT = 4, TURN_RIGHT = 5, PEN_UP = 6, PEN_DOWN = 7, PEN_COLOR = 8, BACKGROUND = 9, RESET = 10, UNDO = 11, RECTANGLE = 12;
@@ -90,7 +94,7 @@ public class LogoRenderer extends Renderer2D implements ShellListener
 		gl.glLineWidth (2);
 
 		/* plot a line following the turtle's movements */
-		gl.glBegin (GL.GL_LINE_STRIP);
+		gl.glBegin (GL2.GL_LINE_STRIP);
 		{
 			for (TurtleState v : vertices)
 			{
@@ -108,7 +112,7 @@ public class LogoRenderer extends Renderer2D implements ShellListener
 						double top = v.getPosition ().getY ();
 						double bottom = v.getOtherCorner ().getY ();
 						gl.glEnd ();
-						gl.glBegin (GL.GL_TRIANGLE_STRIP);
+						gl.glBegin (GL2.GL_TRIANGLE_STRIP);
 						{
 							gl.glVertex2d (right, bottom);
 							gl.glVertex2d (right, top);
@@ -117,7 +121,7 @@ public class LogoRenderer extends Renderer2D implements ShellListener
 							gl.glVertex2d (right, bottom);
 						}
 						gl.glEnd ();
-						gl.glBegin (GL.GL_LINE_STRIP);
+						gl.glBegin (GL2.GL_LINE_STRIP);
 					}
 					else
 					/* draw the next point in the turtle's path */
@@ -129,7 +133,7 @@ public class LogoRenderer extends Renderer2D implements ShellListener
 				/* if the pen is up, we need to put a break in the line */
 				{
 					gl.glEnd ();
-					gl.glBegin (GL.GL_LINE_STRIP);
+					gl.glBegin (GL2.GL_LINE_STRIP);
 				}
 			}
 		}

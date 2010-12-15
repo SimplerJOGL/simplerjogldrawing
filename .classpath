@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JOGL 2.0"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/SimplerJOGL SVN"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SimplerJOGL 1.1"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
